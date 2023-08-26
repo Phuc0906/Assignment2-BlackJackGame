@@ -34,7 +34,18 @@ struct ContentView: View {
                     .cornerRadius(20)
                     
                     Spacer()
-                    
+                    HStack {
+                        Image(systemName: "gamecontroller")
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                            .foregroundColor(.white)
+                        Spacer()
+                        Image(systemName: "questionmark.circle")
+                            .resizable()
+                            .frame(width: 25, height: 25)
+                            .foregroundColor(.white)
+                            
+                    }
                 }
             }
         }.fullScreenCover(isPresented: $navigateToNextView) {

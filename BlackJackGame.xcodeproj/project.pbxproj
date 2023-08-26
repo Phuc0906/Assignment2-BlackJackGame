@@ -12,6 +12,14 @@
 		BC2EB9202A85E4240061F371 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC2EB91F2A85E4240061F371 /* Assets.xcassets */; };
 		BC2EB9232A85E4240061F371 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC2EB9222A85E4240061F371 /* Preview Assets.xcassets */; };
 		BC2EB92B2A85EA340061F371 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2EB92A2A85EA340061F371 /* GameView.swift */; };
+		BC5E084E2A90C17000D5A2C6 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5E084D2A90C17000D5A2C6 /* GameManager.swift */; };
+		BC5E08502A90C40F00D5A2C6 /* OptionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5E084F2A90C40F00D5A2C6 /* OptionButtonView.swift */; };
+		BC5E08562A96124B00D5A2C6 /* BlackJackClassificationModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BC5E08552A96124B00D5A2C6 /* BlackJackClassificationModel.mlmodel */; };
+		BC5E08592A97250400D5A2C6 /* PlaySound.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5E08582A97250400D5A2C6 /* PlaySound.swift */; };
+		BC5E085D2A97C0C500D5A2C6 /* shuffle-sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BC5E085B2A97C0C500D5A2C6 /* shuffle-sound.mp3 */; };
+		BC5E085E2A97C0C500D5A2C6 /* flip-sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BC5E085C2A97C0C500D5A2C6 /* flip-sound.mp3 */; };
+		BC5E08612A97C2AF00D5A2C6 /* win-sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BC5E085F2A97C2AF00D5A2C6 /* win-sound.mp3 */; };
+		BC5E08622A97C2AF00D5A2C6 /* lose-sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BC5E08602A97C2AF00D5A2C6 /* lose-sound.mp3 */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -21,6 +29,14 @@
 		BC2EB91F2A85E4240061F371 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC2EB9222A85E4240061F371 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BC2EB92A2A85EA340061F371 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		BC5E084D2A90C17000D5A2C6 /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
+		BC5E084F2A90C40F00D5A2C6 /* OptionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionButtonView.swift; sourceTree = "<group>"; };
+		BC5E08552A96124B00D5A2C6 /* BlackJackClassificationModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = BlackJackClassificationModel.mlmodel; sourceTree = "<group>"; };
+		BC5E08582A97250400D5A2C6 /* PlaySound.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlaySound.swift; sourceTree = "<group>"; };
+		BC5E085B2A97C0C500D5A2C6 /* shuffle-sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "shuffle-sound.mp3"; sourceTree = "<group>"; };
+		BC5E085C2A97C0C500D5A2C6 /* flip-sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "flip-sound.mp3"; sourceTree = "<group>"; };
+		BC5E085F2A97C2AF00D5A2C6 /* win-sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "win-sound.mp3"; sourceTree = "<group>"; };
+		BC5E08602A97C2AF00D5A2C6 /* lose-sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "lose-sound.mp3"; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +69,10 @@
 		BC2EB91A2A85E4230061F371 /* BlackJackGame */ = {
 			isa = PBXGroup;
 			children = (
+				BC5E085A2A97C09D00D5A2C6 /* Sound */,
+				BC5E08572A9724EF00D5A2C6 /* Helper */,
+				BC5E08552A96124B00D5A2C6 /* BlackJackClassificationModel.mlmodel */,
+				BC5E084C2A90C15C00D5A2C6 /* Model */,
 				BC2EB9292A85EA230061F371 /* View */,
 				BC2EB91B2A85E4230061F371 /* BlackJackGameApp.swift */,
 				BC2EB91D2A85E4230061F371 /* ContentView.swift */,
@@ -74,8 +94,36 @@
 			isa = PBXGroup;
 			children = (
 				BC2EB92A2A85EA340061F371 /* GameView.swift */,
+				BC5E084F2A90C40F00D5A2C6 /* OptionButtonView.swift */,
 			);
 			path = View;
+			sourceTree = "<group>";
+		};
+		BC5E084C2A90C15C00D5A2C6 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				BC5E084D2A90C17000D5A2C6 /* GameManager.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		BC5E08572A9724EF00D5A2C6 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				BC5E08582A97250400D5A2C6 /* PlaySound.swift */,
+			);
+			path = Helper;
+			sourceTree = "<group>";
+		};
+		BC5E085A2A97C09D00D5A2C6 /* Sound */ = {
+			isa = PBXGroup;
+			children = (
+				BC5E08602A97C2AF00D5A2C6 /* lose-sound.mp3 */,
+				BC5E085F2A97C2AF00D5A2C6 /* win-sound.mp3 */,
+				BC5E085C2A97C0C500D5A2C6 /* flip-sound.mp3 */,
+				BC5E085B2A97C0C500D5A2C6 /* shuffle-sound.mp3 */,
+			);
+			path = Sound;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -136,7 +184,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				BC5E08612A97C2AF00D5A2C6 /* win-sound.mp3 in Resources */,
+				BC5E08622A97C2AF00D5A2C6 /* lose-sound.mp3 in Resources */,
 				BC2EB9232A85E4240061F371 /* Preview Assets.xcassets in Resources */,
+				BC5E085E2A97C0C500D5A2C6 /* flip-sound.mp3 in Resources */,
+				BC5E085D2A97C0C500D5A2C6 /* shuffle-sound.mp3 in Resources */,
 				BC2EB9202A85E4240061F371 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -149,8 +201,12 @@
 			buildActionMask = 2147483647;
 			files = (
 				BC2EB91E2A85E4230061F371 /* ContentView.swift in Sources */,
+				BC5E08592A97250400D5A2C6 /* PlaySound.swift in Sources */,
+				BC5E084E2A90C17000D5A2C6 /* GameManager.swift in Sources */,
 				BC2EB92B2A85EA340061F371 /* GameView.swift in Sources */,
 				BC2EB91C2A85E4230061F371 /* BlackJackGameApp.swift in Sources */,
+				BC5E08502A90C40F00D5A2C6 /* OptionButtonView.swift in Sources */,
+				BC5E08562A96124B00D5A2C6 /* BlackJackClassificationModel.mlmodel in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
