@@ -12,6 +12,10 @@
 		BC2EB9202A85E4240061F371 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC2EB91F2A85E4240061F371 /* Assets.xcassets */; };
 		BC2EB9232A85E4240061F371 /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = BC2EB9222A85E4240061F371 /* Preview Assets.xcassets */; };
 		BC2EB92B2A85EA340061F371 /* GameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC2EB92A2A85EA340061F371 /* GameView.swift */; };
+		BC50ED352A99EA6100441BB0 /* GuidelineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC50ED342A99EA6100441BB0 /* GuidelineView.swift */; };
+		BC50ED372A9DFB0000441BB0 /* LeaderboardView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC50ED362A9DFB0000441BB0 /* LeaderboardView.swift */; };
+		BC50ED392A9DFCDF00441BB0 /* LeaderboardPlayerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC50ED382A9DFCDF00441BB0 /* LeaderboardPlayerView.swift */; };
+		BC50ED3D2A9E40AC00441BB0 /* UserRecord.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC50ED3C2A9E40AC00441BB0 /* UserRecord.swift */; };
 		BC5E084E2A90C17000D5A2C6 /* GameManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5E084D2A90C17000D5A2C6 /* GameManager.swift */; };
 		BC5E08502A90C40F00D5A2C6 /* OptionButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BC5E084F2A90C40F00D5A2C6 /* OptionButtonView.swift */; };
 		BC5E08562A96124B00D5A2C6 /* BlackJackClassificationModel.mlmodel in Sources */ = {isa = PBXBuildFile; fileRef = BC5E08552A96124B00D5A2C6 /* BlackJackClassificationModel.mlmodel */; };
@@ -20,6 +24,7 @@
 		BC5E085E2A97C0C500D5A2C6 /* flip-sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BC5E085C2A97C0C500D5A2C6 /* flip-sound.mp3 */; };
 		BC5E08612A97C2AF00D5A2C6 /* win-sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BC5E085F2A97C2AF00D5A2C6 /* win-sound.mp3 */; };
 		BC5E08622A97C2AF00D5A2C6 /* lose-sound.mp3 in Resources */ = {isa = PBXBuildFile; fileRef = BC5E08602A97C2AF00D5A2C6 /* lose-sound.mp3 */; };
+		BC7481A92AA0F1A700ABC993 /* CasinoFlatShadow.ttf in Resources */ = {isa = PBXBuildFile; fileRef = BC7481A82AA0F1A700ABC993 /* CasinoFlatShadow.ttf */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -29,6 +34,10 @@
 		BC2EB91F2A85E4240061F371 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		BC2EB9222A85E4240061F371 /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		BC2EB92A2A85EA340061F371 /* GameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameView.swift; sourceTree = "<group>"; };
+		BC50ED342A99EA6100441BB0 /* GuidelineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GuidelineView.swift; sourceTree = "<group>"; };
+		BC50ED362A9DFB0000441BB0 /* LeaderboardView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardView.swift; sourceTree = "<group>"; };
+		BC50ED382A9DFCDF00441BB0 /* LeaderboardPlayerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LeaderboardPlayerView.swift; sourceTree = "<group>"; };
+		BC50ED3C2A9E40AC00441BB0 /* UserRecord.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserRecord.swift; sourceTree = "<group>"; };
 		BC5E084D2A90C17000D5A2C6 /* GameManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameManager.swift; sourceTree = "<group>"; };
 		BC5E084F2A90C40F00D5A2C6 /* OptionButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OptionButtonView.swift; sourceTree = "<group>"; };
 		BC5E08552A96124B00D5A2C6 /* BlackJackClassificationModel.mlmodel */ = {isa = PBXFileReference; lastKnownFileType = file.mlmodel; path = BlackJackClassificationModel.mlmodel; sourceTree = "<group>"; };
@@ -37,6 +46,8 @@
 		BC5E085C2A97C0C500D5A2C6 /* flip-sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "flip-sound.mp3"; sourceTree = "<group>"; };
 		BC5E085F2A97C2AF00D5A2C6 /* win-sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "win-sound.mp3"; sourceTree = "<group>"; };
 		BC5E08602A97C2AF00D5A2C6 /* lose-sound.mp3 */ = {isa = PBXFileReference; lastKnownFileType = audio.mp3; path = "lose-sound.mp3"; sourceTree = "<group>"; };
+		BC7481A82AA0F1A700ABC993 /* CasinoFlatShadow.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = CasinoFlatShadow.ttf; sourceTree = "<group>"; };
+		BC7481AA2AA0F20300ABC993 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist; path = Info.plist; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -69,6 +80,9 @@
 		BC2EB91A2A85E4230061F371 /* BlackJackGame */ = {
 			isa = PBXGroup;
 			children = (
+				BC7481AA2AA0F20300ABC993 /* Info.plist */,
+				BC7481A82AA0F1A700ABC993 /* CasinoFlatShadow.ttf */,
+				BC7481A72AA0F19700ABC993 /* fonts */,
 				BC5E085A2A97C09D00D5A2C6 /* Sound */,
 				BC5E08572A9724EF00D5A2C6 /* Helper */,
 				BC5E08552A96124B00D5A2C6 /* BlackJackClassificationModel.mlmodel */,
@@ -95,6 +109,9 @@
 			children = (
 				BC2EB92A2A85EA340061F371 /* GameView.swift */,
 				BC5E084F2A90C40F00D5A2C6 /* OptionButtonView.swift */,
+				BC50ED342A99EA6100441BB0 /* GuidelineView.swift */,
+				BC50ED362A9DFB0000441BB0 /* LeaderboardView.swift */,
+				BC50ED382A9DFCDF00441BB0 /* LeaderboardPlayerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -103,6 +120,7 @@
 			isa = PBXGroup;
 			children = (
 				BC5E084D2A90C17000D5A2C6 /* GameManager.swift */,
+				BC50ED3C2A9E40AC00441BB0 /* UserRecord.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -124,6 +142,13 @@
 				BC5E085B2A97C0C500D5A2C6 /* shuffle-sound.mp3 */,
 			);
 			path = Sound;
+			sourceTree = "<group>";
+		};
+		BC7481A72AA0F19700ABC993 /* fonts */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = fonts;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -189,6 +214,7 @@
 				BC2EB9232A85E4240061F371 /* Preview Assets.xcassets in Resources */,
 				BC5E085E2A97C0C500D5A2C6 /* flip-sound.mp3 in Resources */,
 				BC5E085D2A97C0C500D5A2C6 /* shuffle-sound.mp3 in Resources */,
+				BC7481A92AA0F1A700ABC993 /* CasinoFlatShadow.ttf in Resources */,
 				BC2EB9202A85E4240061F371 /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -203,10 +229,14 @@
 				BC2EB91E2A85E4230061F371 /* ContentView.swift in Sources */,
 				BC5E08592A97250400D5A2C6 /* PlaySound.swift in Sources */,
 				BC5E084E2A90C17000D5A2C6 /* GameManager.swift in Sources */,
+				BC50ED392A9DFCDF00441BB0 /* LeaderboardPlayerView.swift in Sources */,
+				BC50ED3D2A9E40AC00441BB0 /* UserRecord.swift in Sources */,
 				BC2EB92B2A85EA340061F371 /* GameView.swift in Sources */,
+				BC50ED372A9DFB0000441BB0 /* LeaderboardView.swift in Sources */,
 				BC2EB91C2A85E4230061F371 /* BlackJackGameApp.swift in Sources */,
 				BC5E08502A90C40F00D5A2C6 /* OptionButtonView.swift in Sources */,
 				BC5E08562A96124B00D5A2C6 /* BlackJackClassificationModel.mlmodel in Sources */,
+				BC50ED352A99EA6100441BB0 /* GuidelineView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -338,6 +368,7 @@
 				DEVELOPMENT_TEAM = 8U646G56Y3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BlackJackGame/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -367,6 +398,7 @@
 				DEVELOPMENT_TEAM = 8U646G56Y3;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = BlackJackGame/Info.plist;
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

@@ -21,6 +21,9 @@ struct OptionButtonView: View {
     @Binding var chip1k: Int
     @Binding var chip5k: Int
     @Binding var chip10k: Int
+    @Binding var dataArray: [(Int, String, Int)]
+    @Binding var currentPlayer: UserRecord?
+    @Binding var isHard: Bool
     
     func dealerProcess(onDealerDone: @escaping () -> Void){
         var totalScore = gameManager.getDealerScore()
@@ -40,11 +43,36 @@ struct OptionButtonView: View {
         if totalScore <= 16 {
             //apply machine learning here
             do {
-                let config = MLModelConfiguration()
-                let model = try BlackJackClassificationModel(configuration: config)
-                let prediction = try model.prediction(number_of_card: Double(gameManager.dealerCards.count), total_point: Double(totalScore), pick: "True")
-                print(prediction.win)
-                if (prediction.win == "True") {
+                if isHard { // pick with Machine Learning
+                    
+                    let config = MLModelConfiguration()
+                    let model = try BlackJackClassificationModel(configuration: config)
+                    let prediction = try model.prediction(number_of_card: Double(gameManager.dealerCards.count), total_point: Double(totalScore), pick: "True")
+                    print(prediction.win)
+                    if (prediction.win == "True") {
+                        playSound(sound: "flip-sound", type: "mp3")
+                        yOffset = -UIScreen.main.bounds.width / 2
+                        cardMoveAnimation = true
+                        // TODO: first card to player
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            cardMoveAnimation = false
+                            yOffset = 0
+                            // player receive card
+                            gameManager.dealerPick()
+                            DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                                dealerProcess(onDealerDone: onDealerDone)
+                            }
+                        }
+                    }else { // pick randomly
+                        isAllowPlayerPick = false
+                        isDealerCheckCard = true
+                        print("Dealer score computed 1: \(totalScore)")
+                        print(gameManager.dealerCards)
+                        DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
+                            onDealerDone()
+                        }
+                    }
+                }else {
                     playSound(sound: "flip-sound", type: "mp3")
                     yOffset = -UIScreen.main.bounds.width / 2
                     cardMoveAnimation = true
@@ -57,14 +85,6 @@ struct OptionButtonView: View {
                         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
                             dealerProcess(onDealerDone: onDealerDone)
                         }
-                    }
-                }else {
-                    isAllowPlayerPick = false
-                    isDealerCheckCard = true
-                    print("Dealer score computed 1: \(totalScore)")
-                    print(gameManager.dealerCards)
-                    DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
-                        onDealerDone()
                     }
                 }
             }catch {
@@ -141,6 +161,8 @@ struct OptionButtonView: View {
         chip1k = 0
         chip5k = 0
         chip10k = 0
+        gameManager.updatePlayer(playerId: currentPlayer?.id ?? -1, money: moneyRemaining)
+        
     }
     
     
@@ -160,6 +182,7 @@ struct OptionButtonView: View {
             .foregroundColor(.white)
             .background(.red)
             .cornerRadius(20)
+            .font(.custom("CasinoFlatShadow-Regular", size: 17))
             Button("Pick") {
                 playSound(sound: "flip-sound", type: "mp3")
                 yOffset = UIScreen.main.bounds.width / 2
@@ -175,6 +198,7 @@ struct OptionButtonView: View {
             .foregroundColor(.white)
             .background(.blue)
             .cornerRadius(20)
+            .font(.custom("CasinoFlatShadow-Regular", size: 17))
         }.padding(EdgeInsets(top: 80, leading: 20, bottom: 20, trailing: 20))
     }
 }

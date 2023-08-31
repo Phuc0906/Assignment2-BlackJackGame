@@ -12,6 +12,7 @@ class GameManager: ObservableObject {
     @Published var dealerCards: [String] = []
     @Published var playerCards: [String] = []
     @Published var dealerTotalScore: Int = 0
+    private var playerList: [UserRecord] = []
     private var cardPick = 0
     
     init() {
@@ -132,6 +133,87 @@ class GameManager: ObservableObject {
         }else {
             return false
         }
+    }
+    
+    func getMaxId() -> Int {
+        var maxId = 0
+        for player in playerList {
+            if (player.id > maxId) {
+                maxId = player.id
+            }
+        }
+        return maxId
+    }
+    
+    func getPlayers() -> [UserRecord] {
+        
+        let data = UserDefaults.standard.object(forKey: "PlayersKeys2")
+        playerList = []
+        if let storageDataValue = data as? String {
+            let components = storageDataValue.components(separatedBy: "\n")
+            for component in components {
+                // MARK: split each attribute in line
+                let attributes = component.components(separatedBy: ", ")
+                let id = attributes[0].replacingOccurrences(of: "id: ", with: "")
+                let name = attributes[1].replacingOccurrences(of: "name: ", with: "")
+                let money = attributes[2].replacingOccurrences(of: "money: ", with: "")
+                playerList.append(UserRecord(id: Int(id)!, name: name, money: Int(money)!))
+            }
+        }
+        
+        print("COUNT: \(playerList.count)")
+        
+        return playerList
+    }
+    
+    func addPlayer(playerName: String) -> UserRecord {
+        let userMoney = UserRecord(id: getMaxId() + 1, name: playerName, money: 20000)
+        playerList.append(userMoney)
+        let formattedString = playerList.map { "id: \($0.id), name: \($0.name), money: \($0.money)" }
+                                           .joined(separator: "\n")
+        print(formattedString)
+        UserDefaults.standard.set(formattedString, forKey: "PlayersKeys2")
+        
+        return userMoney
+        
+    }
+    
+    func updatePlayer(playerId: Int, money: Int) {
+        
+        if playerId == -1 {
+            return
+        }
+        
+        let data = UserDefaults.standard.object(forKey: "PlayersKeys2")
+        playerList = []
+        if let storageDataValue = data as? String {
+            let components = storageDataValue.components(separatedBy: "\n")
+            for component in components {
+                // MARK: split each attribute in line
+                let attributes = component.components(separatedBy: ", ")
+                let id = attributes[0].replacingOccurrences(of: "id: ", with: "")
+                let name = attributes[1].replacingOccurrences(of: "name: ", with: "")
+                let money = attributes[2].replacingOccurrences(of: "money: ", with: "")
+                playerList.append(UserRecord(id: Int(id)!, name: name, money: Int(money)!))
+            }
+        }
+        print("COUNT: \(playerList.count)")
+        
+        var i = 0
+        while (i < playerList.count) {
+            if playerList[i].id == playerId {
+                playerList[i].money = money
+            }
+            i += 1
+        }
+        let formattedString = playerList.map { "id: \($0.id), name: \($0.name), money: \($0.money)" }
+                                           .joined(separator: "\n")
+        
+        print("Print updated")
+        print(formattedString)
+        UserDefaults.standard.set(formattedString, forKey: "PlayersKeys2")
+        getPlayers()
+        
     }
 
 }

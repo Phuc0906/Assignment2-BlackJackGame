@@ -27,7 +27,11 @@ struct GameView: View {
     @State private var coin10k = 0
     @State private var moneyRemaining = 25000
     @State private var isBetAlert = false
+    @State private var isEnoughMoney = false
     @StateObject var gameManager = GameManager()
+    @State private var dataArray: [(Int, String, Int)] = []
+    @Binding var currentPlayer: UserRecord?
+    @Binding var isHard: Bool
     
     
     // TODO: implement card array
@@ -35,6 +39,8 @@ struct GameView: View {
     func checkBetSum() -> Int {
         return coin1k * 1000 + coin5k * 5000 + coin10k * 10000
     }
+    
+    
     
     func startGamePress() {
         if (checkBetSum() == 0) {
@@ -45,7 +51,7 @@ struct GameView: View {
         playSound(sound: "flip-sound", type: "mp3")
         yOffset = UIScreen.main.bounds.width / 2
         cardMoveAnimation = true
-        // TODO: first card to player
+        // TODO: Distribute cards for dealer and player
         DispatchQueue.main.asyncAfter(deadline: .now() + 1) {
             cardMoveAnimation = false
             yOffset = 0
@@ -108,9 +114,9 @@ struct GameView: View {
                 VStack {
                     VStack {
                         Text("Dealer")
-                            .font(.title)
                             .foregroundColor(.white)
                             .padding(EdgeInsets(top: 20, leading: 20, bottom: 20, trailing: 20))
+                            .font(.custom("CasinoFlatShadow-Regular", size: 25))
                         HStack(spacing: 0) {
                             ForEach(0..<gameManager.dealerCards.count, id: \.self) {index in
                                 // TODO: get cards array here
@@ -134,11 +140,7 @@ struct GameView: View {
                     }
                     Spacer()
                     HStack {
-                        Image(systemName: "gear.circle")
-                            .resizable()
-                            .frame(width: 25, height: 25)
-                            .foregroundColor(.white)
-                        Spacer()
+                        
                         ZStack {
                             Image("blue_back")
                                 .resizable()
@@ -152,11 +154,7 @@ struct GameView: View {
                                 .animation(cardMoveAnimation ? .easeIn(duration: 1) : nil)
                                 .padding(EdgeInsets(top: 0, leading: 0, bottom: 0, trailing: 0))
                         }
-                        Spacer()
-                        Image(systemName: "questionmark.circle")
-                            .resizable()
-                            .frame(width: 25, height: 25)
-                            .foregroundColor(.white)
+                        
                     }.padding(EdgeInsets(top: 0, leading: 20, bottom: 0, trailing: 20))
                     
                     Spacer()
@@ -172,6 +170,9 @@ struct GameView: View {
                                         Text("\(coin1k)")
                                     }.onTapGesture {
                                         coin1k -= 1
+                                        if coin1k < 0 {
+                                            coin1k = 0
+                                        }
                                     }
                                     ZStack {
                                         Image("5k-chip")
@@ -181,6 +182,9 @@ struct GameView: View {
                                         Text("\(coin5k)")
                                     }.onTapGesture {
                                         coin5k -= 1
+                                        if coin5k < 0 {
+                                            coin5k = 0
+                                        }
                                     }
                                     ZStack {
                                         Image("10k-chip")
@@ -190,6 +194,9 @@ struct GameView: View {
                                         Text("\(coin10k)")
                                     }.onTapGesture {
                                         coin10k -= 1
+                                        if coin10k < 0 {
+                                            coin10k = 0
+                                        }
                                     }
                                     
                                 }
@@ -224,13 +231,14 @@ struct GameView: View {
                                     .foregroundColor(.white)
                                     .background(.red)
                                     .cornerRadius(20)
+                                    .font(.custom("CasinoFlatShadow-Regular", size: 17))
                                 }.padding(EdgeInsets(top: 80, leading: 20, bottom: 20, trailing: 20))
                             }else if (isAllowPlayerPick) {
                                 OptionButtonView(gameManager: gameManager, yOffset: $yOffset, cardMoveAnimation: $cardMoveAnimation, isAllowPlayerPick: $isAllowPlayerPick, isDealerCheckCard: $isDealerCheckCard, isDisplayStatus: $displayStatus, isPlayerWin: $playerWin, isDraw: $isDraw,
                                 moneyRemaining: $moneyRemaining,
                                 chip1k: $coin1k,
                                 chip5k: $coin5k,
-                                chip10k: $coin10k)
+                                chip10k: $coin10k, dataArray: $dataArray, currentPlayer: $currentPlayer, isHard: $isHard)
                             }else if (isDealerCheckCard) {
                                 HStack {
                                     Button("Play again") {
@@ -245,6 +253,7 @@ struct GameView: View {
                                     .foregroundColor(.white)
                                     .background(.red)
                                     .cornerRadius(20)
+                                    .font(.custom("CasinoFlatShadow-Regular", size: 17))
                                 }.padding(EdgeInsets(top: 80, leading: 20, bottom: 20, trailing: 20))
                             }
                         }.frame(minHeight: 110)
@@ -259,6 +268,7 @@ struct GameView: View {
                                         .frame(width: 60, height: 30)
                                     Text("\(moneyRemaining) $")
                                         .foregroundColor(.white)
+                                        .font(.custom("CasinoFlatShadow-Regular", size: 17))
                                 }
                                 
                                 Spacer()
@@ -274,7 +284,7 @@ struct GameView: View {
                             HStack {
                                 Text("Player")
                                     .foregroundColor(.white)
-                                    .font(.title)
+                                    .font(.custom("CasinoFlatShadow-Regular", size: 25))
                             }
                         }
                     }
@@ -298,6 +308,10 @@ struct GameView: View {
                                 .transition(.opacity)
                                 .onTapGesture {
                                     coin1k += 1
+                                    if checkBetSum() > moneyRemaining {
+                                        coin1k -= 1
+                                        isEnoughMoney = true
+                                    }
                                 }
                                 
                             ZStack {
@@ -310,6 +324,10 @@ struct GameView: View {
                                 .transition(.opacity)
                                 .onTapGesture {
                                     coin5k += 1
+                                    if checkBetSum() > moneyRemaining {
+                                        coin5k -= 1
+                                        isEnoughMoney = true
+                                    }
                                 }
                             
                             
@@ -324,6 +342,10 @@ struct GameView: View {
                                 .transition(.opacity)
                                 .onTapGesture {
                                     coin10k += 1
+                                    if checkBetSum() > moneyRemaining {
+                                        coin10k -= 1
+                                        isEnoughMoney = true
+                                    }
                                 }
                         }
                         
@@ -378,20 +400,20 @@ struct GameView: View {
                 }
             }
         }.onAppear {
-//            playSound(sound: "shuffle-sound", type: "mp3")
+            playSound(sound: "shuffle-sound", type: "mp3")
             // TODO: suffle card array
             // code for suffle card
             print("before shuffle: \(gameManager.cards[0])")
             gameManager.shuffleCards()
             print("After shuffle: \(gameManager.cards[0])")
+            print("Money of \(currentPlayer?.name) is \(currentPlayer?.money)")
+            moneyRemaining = currentPlayer?.money ?? 0
         }.alert(isPresented: $isBetAlert) {
             Alert(title: Text("You are not set the bet yet"))
+        }.alert(isPresented: $isEnoughMoney) {
+            Alert(title: Text("Your budget is not enough"))
         }
     }
 }
 
-struct GameView_Previews: PreviewProvider {
-    static var previews: some View {
-        GameView()
-    }
-}
+
